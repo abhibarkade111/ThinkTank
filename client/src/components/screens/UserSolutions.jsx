@@ -7,9 +7,9 @@ import { Spinner } from "react-bootstrap";
 
 function UserSolutions() {
   const { state } = useLocation();
-  console.log("state", state);
+  // console.log("state", state);
   const solutionList = state?.solutions;
-  console.log("solutionList", solutionList);
+  // console.log("solutionList", solutionList);
   if (!solutionList || solutionList.length == 0) {
     return (
       <div>

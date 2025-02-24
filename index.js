@@ -31,7 +31,7 @@ app.use(userRoute)
 const problemRouter = require('./routes/problem') 
 app.use(problemRouter)
 
-if(process.env.NODE_ENV ==="dev"){
+if(process.env.NODE_ENV ==="production"){
   app.use(express.static('client/dist'))
   const path = require('path')
   app.get("*",(req,res)=>{

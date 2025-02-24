@@ -44,7 +44,7 @@ router.post('/signup', (req,res)=>{
 
 router.post('/signin', (req,res)=>{
   const {email, password} = req.body.formData
-  console.log("API: ", email, password, req.body)
+  // console.log("API: ", email, password, req.body)
   if(!email || !password){
     return res.status(422).json({err: 'Please add email or password'})
   }

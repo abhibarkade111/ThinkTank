@@ -33,8 +33,8 @@ const ProblemForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("Form Data:", formData);
-    fetch("http://localhost:5000/submitproblem", {
+    // console.log("Form Data:", formData);
+    fetch("/submitproblem", {
       method: "post",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

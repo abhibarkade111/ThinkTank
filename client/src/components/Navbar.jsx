@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import React, { useState } from "react";
 import Image from "react-bootstrap/Image";
 import profilePicture from "../assets/abhishek_barkade_profile.jpg";
 import { useNavigate } from "react-router-dom";
@@ -26,34 +27,34 @@ const imageMap = {
   ShreyaPic: ShreyaPic,
 };
 
-function TextLinkExample() {
+function NavbarComponenet() {
+  const [expanded, setExpanded] = useState(false);
+  const handleClick = (url) => {
+    setExpanded(false);
+    if (currentUser) {
+      navigate(url);
+    } else {
+      navigate("/signin");
+    }
+  };
   const navigate = useNavigate();
   const currentUser = !localStorage.getItem("user")
     ? null
     : JSON.parse(localStorage.getItem("user"));
   return (
-    <Navbar
-      className="bg-body-tertiary"
-      fixed="top"
-      bg="dark"
-      data-bs-theme="dark"
-    >
+    <Navbar expand="md" bg="dark" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand
-          onClick={() => (currentUser ? navigate("/") : navigate("/signin"))}
-        >
-          ThinkTank
-        </Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Brand onClick={() => handleClick("/")}>ThinkTank</Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className="me-auto">
-            <Nav.Link
-              onClick={() =>
-                currentUser ? navigate("/problems") : navigate("/signin")
-              }
-            >
+          <Nav className="me-auto" onSelect={() => setExpanded(false)}>
+            <Nav.Link onClick={() => handleClick("/problems")}>
               Problems
             </Nav.Link>
+            <Nav.Link onClick={() => handleClick("/users")}>Users</Nav.Link>
             <Nav.Link
               onClick={() =>
                 currentUser ? navigate("/addproblem") : navigate("/signin")
@@ -79,4 +80,4 @@ function TextLinkExample() {
   );
 }
 
-export default TextLinkExample;
+export default NavbarComponenet;

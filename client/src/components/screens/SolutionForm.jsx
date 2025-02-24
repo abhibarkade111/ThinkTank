@@ -26,8 +26,8 @@ const SolutionForm = () => {
     e.preventDefault();
     setLoading(true);
     // Call API or submit function
-    console.log("Submitted Solution:", formData);
-    fetch("http://localhost:5000/submitsolution", {
+    // console.log("Submitted Solution:", formData);
+    fetch("/submitsolution", {
       method: "post",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

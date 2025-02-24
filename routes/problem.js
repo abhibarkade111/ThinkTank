@@ -7,7 +7,7 @@ const { JWT_SECRET } = require("../config/keys")
 
 router.post('/submitproblem', requireLogin, (req,res)=>{
   const {statement,description,tech,additional_comment} = req.body.formData
-  console.log("req.body", req.body)
+  // console.log("req.body", req.body)
   if(!statement || !description){
     return res.status(422).json({error: "Please add all the feilds"})
   }

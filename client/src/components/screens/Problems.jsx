@@ -10,23 +10,23 @@ function Problems() {
   const [problemList, setData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/allproblems", {
+    fetch("/allproblems", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("result:", result);
+        // console.log("result:", result);
         setData(result.problems);
         setLoading(false);
       });
   }, []);
 
   const fetchSolutions = (item) => {
-    console.log("item", JSON.stringify(item));
+    // console.log("item", JSON.stringify(item));
     setLoading(true);
-    fetch("http://localhost:5000/problemsolutions", {
+    fetch("/problemsolutions", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function Problems() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("result solutions:", result);
+        // console.log("result solutions:", result);
         setLoading(false);
         navigate("/problems/solutions", {
           state: { solutions: result.solutions, problem: item },

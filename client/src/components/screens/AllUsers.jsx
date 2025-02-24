@@ -35,23 +35,23 @@ function AllUsers() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/allusers", {
+    fetch("/allusers", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("result:", result);
+        // console.log("result:", result);
         setData(result.users);
         setLoading(false);
       });
   }, []);
 
   const fetchSolutions = (item) => {
-    console.log("item", JSON.stringify(item));
+    // console.log("item", JSON.stringify(item));
     setLoading(true);
-    fetch("http://localhost:5000/usersolutions", {
+    fetch("/usersolutions", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function AllUsers() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("result solutions:", result);
+        // console.log("result solutions:", result);
         setLoading(false);
         navigate("/solutions", {
           state: {

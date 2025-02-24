@@ -2,11 +2,12 @@ import React from "react";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import HomeImage from "../../assets/home_image.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <Container fluid className="p-0">
-      {/* Hero Section */}
       <div
         className="hero-section d-flex text-white "
         style={{
@@ -38,10 +39,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Feature Cards Section */}
       <Container className="mt-5">
         <Row className="g-4">
-          {/* Feature 1 */}
           <Col md={4}>
             <Card className="text-center shadow">
               <Card.Body>
@@ -50,12 +49,12 @@ const Home = () => {
                   Discover and connect with all users on the platform. Browse
                   profiles, view contributions, and collaborate effortlessly.
                 </Card.Text>
-                <Button variant="primary">View All Users</Button>
+                <Button variant="primary" onClick={() => navigate("/users")}>
+                  View All Users
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-
-          {/* Feature 2 */}
           <Col md={4}>
             <Card className="text-center shadow">
               <Card.Body>
@@ -64,12 +63,12 @@ const Home = () => {
                   Access a collection of challenging problems. Test your skills,
                   learn new concepts, and contribute your solutions.
                 </Card.Text>
-                <Button variant="success">Explore Problems</Button>
+                <Button variant="success" onClick={() => navigate("/problems")}>
+                  Explore Problems
+                </Button>
               </Card.Body>
             </Card>
           </Col>
-
-          {/* Feature 3 */}
           <Col md={4}>
             <Card className="text-center shadow">
               <Card.Body>
@@ -78,7 +77,12 @@ const Home = () => {
                   Got a tricky problem? Contribute it to the community and help
                   others sharpen their problem-solving skills.
                 </Card.Text>
-                <Button variant="danger">Submit a Problem</Button>
+                <Button
+                  variant="danger"
+                  onClick={() => navigate("/addproblem")}
+                >
+                  Submit a Problem
+                </Button>
               </Card.Body>
             </Card>
           </Col>
