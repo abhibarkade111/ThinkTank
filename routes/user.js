@@ -15,4 +15,31 @@ router.get('/allusers', requireLogin, (req,res)=>{
   })
 })
 
+router.put('/incproblemsolved', requireLogin, (req,res)=>{
+  User.findByIdAndUpdate(
+    req.user._id,
+    {$inc: {problemsSolved:1}},
+    {new : true}
+  )
+  .then(updateUser=>{
+    res.json({updateUser})
+  })
+  .catch(err=>{
+    console.log(err)
+  })
+})
+
+router.put('/incproblemadded', requireLogin, (req,res)=>{
+  User.findByIdAndUpdate(
+    req.user._id,
+    {$inc: {problemsAdded:1}},
+    {new : true}
+  )
+  .then(updateUser=>{
+    res.json({updateUser})
+  })
+  .catch(err=>{
+    console.log(err)
+  })
+})
 module.exports= router

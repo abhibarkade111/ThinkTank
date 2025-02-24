@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Button, Container, Toast, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { UserContext } from "../../App";
@@ -13,6 +13,17 @@ const SignInForm = () => {
     email: "",
     password: "",
   });
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const showToast = (message, variant) => {
     setToast({ show: true, message, variant });
@@ -64,7 +75,7 @@ const SignInForm = () => {
   return (
     <Container
       style={{
-        width: "40rem",
+        width: isMobile ? "100%" : "40rem",
         maxWidth: "900px",
         textAlign: "left",
       }}

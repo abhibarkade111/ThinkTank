@@ -34,6 +34,17 @@ function AllUsers() {
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     fetch("/allusers", {
       headers: {
@@ -96,7 +107,13 @@ function AllUsers() {
           data.map((item) => {
             return (
               <Col>
-                <Card style={{ width: "18rem", margin: "2rem" }}>
+                <Card
+                  style={{
+                    width: isMobile ? "100%" : "18rem",
+                    margin: "2vh",
+                    alignItems: "center",
+                  }}
+                >
                   <Card.Img
                     variant="top"
                     src={imageMap[item.pic]}

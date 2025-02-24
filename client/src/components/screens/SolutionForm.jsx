@@ -13,6 +13,17 @@ const SolutionForm = () => {
     additional_comment: "",
   });
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   console.log("location", location);
   const showToast = (message, variant) => {
     setToast({ show: true, message, variant });
@@ -22,7 +33,33 @@ const SolutionForm = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const increaseProblemSolved = () => {
+    fetch("/incproblemsolved", {
+      method: "put",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: JSON.parse(localStorage.getItem("user")),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        setLoading(false);
+        if (data.err) {
+          showToast(data.err, "danger");
+        } else if (data.error) {
+          showToast(data.error, "danger");
+        } else {
+          showToast("Problem solved count increased", "success");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,6 +88,7 @@ const SolutionForm = () => {
           showToast(data.error, "danger");
         } else {
           showToast("Solution submited successfully!", "success");
+          increaseProblemSolved();
         }
       })
       .catch((err) => {
@@ -66,7 +104,7 @@ const SolutionForm = () => {
     <Container
       className="d-flex justify-content-center align-items-center"
       style={{
-        width: "40rem",
+        width: isMobile ? "100%" : "40rem",
         maxWidth: "900px",
         textAlign: "left",
         marginTop: "60px",

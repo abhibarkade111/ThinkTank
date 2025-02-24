@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Button, Container, Toast, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { UserContext } from "../../App";
@@ -15,6 +15,17 @@ const ProblemForm = () => {
     tech: "",
   });
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const showToast = (message, variant) => {
     setToast({ show: true, message, variant });
     setTimeout(() => setToast({ show: false, message: "", variant: "" }), 3000);
@@ -27,6 +38,34 @@ const ProblemForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const increaseProblemAdded = () => {
+    fetch("/incproblemadded", {
+      method: "put",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: JSON.parse(localStorage.getItem("user")),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        setLoading(false);
+        if (data.err) {
+          showToast(data.err, "danger");
+        } else if (data.error) {
+          showToast(data.error, "danger");
+        } else {
+          showToast("Problem added count increased", "success");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // Handle form submission
@@ -56,6 +95,7 @@ const ProblemForm = () => {
           showToast(data.error, "danger");
         } else {
           showToast("Problem submited successfully!", "success");
+          increaseProblemAdded();
         }
       })
       .catch((err) => {
@@ -72,7 +112,7 @@ const ProblemForm = () => {
   return (
     <Container
       style={{
-        width: "40rem",
+        width: isMobile ? "100%" : "40rem",
         maxWidth: "900px",
         textAlign: "left",
         marginTop: "60px",
