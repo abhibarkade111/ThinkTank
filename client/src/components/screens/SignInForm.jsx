@@ -41,6 +41,7 @@ const SignInForm = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
+        setLoading(false);
         if (data.err) {
           //    console.log(data)
           showToast(data.err, "danger");
@@ -52,7 +53,6 @@ const SignInForm = () => {
           // console.log(data)
           dispatch({ type: "USER", payload: data.user });
           showToast("Sign in successfully!", "success");
-          setLoading(false);
           navigate("/");
         }
       })

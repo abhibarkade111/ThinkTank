@@ -13,6 +13,7 @@ const SolutionForm = () => {
     additional_comment: "",
   });
 
+  console.log("location", location);
   const showToast = (message, variant) => {
     setToast({ show: true, message, variant });
     setTimeout(() => setToast({ show: false, message: "", variant: "" }), 3000);
@@ -77,7 +78,7 @@ const SolutionForm = () => {
         style={{ width: "100%", maxWidth: "500px", textAlign: "left" }}
       >
         {/* Problem Statement as Title */}
-        <h4 className="text-left mb-3">{location.state.statement}</h4>
+        <h4 className="text-left mb-3">{location.state.problem.statement}</h4>
 
         {/* Solution Field */}
         <Form.Group className="mb-3">
