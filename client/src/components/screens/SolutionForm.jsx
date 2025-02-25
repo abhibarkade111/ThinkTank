@@ -24,7 +24,7 @@ const SolutionForm = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log("location", location);
+  // console.log("location", location);
   const showToast = (message, variant) => {
     setToast({ show: true, message, variant });
     setTimeout(() => setToast({ show: false, message: "", variant: "" }), 3000);
@@ -64,7 +64,7 @@ const SolutionForm = () => {
     e.preventDefault();
     setLoading(true);
     // Call API or submit function
-    console.log("Submitted Solution:", location.state);
+    // console.log("Submitted Solution:", location.state);
     fetch("/submitsolution", {
       method: "post",
       headers: {
