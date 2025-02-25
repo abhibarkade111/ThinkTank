@@ -72,7 +72,17 @@ function Problems() {
               <Card.Body>
                 <Card.Title>{item.statement}</Card.Title>
                 <Card.Text>
-                  <strong>Description:</strong> {item.description}
+                  <strong>Description:</strong>
+                  <pre
+                    style={{
+                      backgroundColor: "#f8f9fa",
+                      padding: "10px",
+                      borderRadius: "5px",
+                      overflowX: "auto",
+                    }}
+                  >
+                    {item.description}
+                  </pre>
                 </Card.Text>
                 <Card.Text>
                   <strong>Additional Comment:</strong> {item.additional_comment}

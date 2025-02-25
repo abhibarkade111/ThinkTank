@@ -39,6 +39,7 @@ function UserSolutions() {
             </h4>
           </div>
           {solutionList.map((item) => {
+            console.log("item", item);
             return (
               <Card
                 style={{
@@ -53,7 +54,7 @@ function UserSolutions() {
                     padding: "0em",
                   }}
                 >
-                  <Card.Title>{item.problem.statement}</Card.Title>
+                  <Card.Title>Problem: {item.problem.statement}</Card.Title>
                   <Card.Text>
                     <strong>Solution:</strong>
                     <pre
