@@ -88,7 +88,7 @@ function Problems() {
                       navigate("solve", { state: { problem: item } })
                     }
                   >
-                    Submit Problem
+                    Solve Problem
                   </Button>
                   <Button
                     variant="primary"

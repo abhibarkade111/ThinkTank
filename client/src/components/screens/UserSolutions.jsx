@@ -48,7 +48,7 @@ function UserSolutions() {
                 }}
               >
                 <Card.Body>
-                  <Card.Title>{item.statement}</Card.Title>
+                  <Card.Title>{item.problem.statement}</Card.Title>
                   <Card.Text>
                     <strong>Solution:</strong>
                     <pre
@@ -68,7 +68,6 @@ function UserSolutions() {
                   <Card.Text>
                     <strong>Tech:</strong> Java
                   </Card.Text>
-                  <Button variant="primary">View More</Button>
                 </Card.Body>
               </Card>
             );

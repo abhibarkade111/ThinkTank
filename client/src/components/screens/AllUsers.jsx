@@ -110,7 +110,7 @@ function AllUsers() {
                 <Card
                   style={{
                     width: isMobile ? "100%" : "18rem",
-                    margin: "2vh",
+                    margin: "0.5vh",
                     alignItems: "center",
                   }}
                 >

@@ -68,7 +68,9 @@ const SignInForm = () => {
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
+        showToast(err, "danger");
       });
   };
 

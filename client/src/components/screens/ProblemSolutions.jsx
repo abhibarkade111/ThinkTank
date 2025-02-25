@@ -73,7 +73,6 @@ function ProblemSolutions() {
                     <Card.Text>
                       <strong>Tech:</strong> Java
                     </Card.Text>
-                    <Button variant="primary">View More</Button>
                   </Card.Body>
                 </Card>
               );

@@ -47,7 +47,6 @@ const SolutionForm = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
-        setLoading(false);
         if (data.err) {
           showToast(data.err, "danger");
         } else if (data.error) {
@@ -58,13 +57,14 @@ const SolutionForm = () => {
       })
       .catch((err) => {
         console.log(err);
+        showToast(err, "danger");
       });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     // Call API or submit function
-    // console.log("Submitted Solution:", formData);
+    console.log("Submitted Solution:", location.state);
     fetch("/submitsolution", {
       method: "post",
       headers: {
@@ -74,7 +74,7 @@ const SolutionForm = () => {
       body: JSON.stringify({
         formData,
         user: JSON.parse(localStorage.getItem("user")),
-        problem: location.state,
+        problem: location.state.problem,
       }),
     })
       .then((res) => res.json())
@@ -93,6 +93,8 @@ const SolutionForm = () => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        showToast(err, "danger");
       });
     // if (onSubmit) onSubmit(formData);
 

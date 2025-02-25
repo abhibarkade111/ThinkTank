@@ -18,7 +18,7 @@ router.get('/allusers', requireLogin, (req,res)=>{
 router.put('/incproblemsolved', requireLogin, (req,res)=>{
   User.findByIdAndUpdate(
     req.user._id,
-    {$inc: {problemsSolved:1}},
+    {$inc: {problemSolved:1}},
     {new : true}
   )
   .then(updateUser=>{
@@ -32,7 +32,7 @@ router.put('/incproblemsolved', requireLogin, (req,res)=>{
 router.put('/incproblemadded', requireLogin, (req,res)=>{
   User.findByIdAndUpdate(
     req.user._id,
-    {$inc: {problemsAdded:1}},
+    {$inc: {problemAdded:1}},
     {new : true}
   )
   .then(updateUser=>{

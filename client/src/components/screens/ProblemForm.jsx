@@ -54,7 +54,6 @@ const ProblemForm = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
-        setLoading(false);
         if (data.err) {
           showToast(data.err, "danger");
         } else if (data.error) {
@@ -65,6 +64,7 @@ const ProblemForm = () => {
       })
       .catch((err) => {
         console.log(err);
+        showToast(err, "danger");
       });
   };
 
@@ -99,8 +99,11 @@ const ProblemForm = () => {
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
+        showToast(err, "danger");
       });
+
     setFormData({
       statement: "",
       tech: "",
