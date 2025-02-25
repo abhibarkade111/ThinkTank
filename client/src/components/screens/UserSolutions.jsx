@@ -45,9 +45,14 @@ function UserSolutions() {
                   width: "100%",
                   margin: "20px auto",
                   textAlign: "left",
+                  padding: "1em",
                 }}
               >
-                <Card.Body>
+                <Card.Body
+                  style={{
+                    padding: "0em",
+                  }}
+                >
                   <Card.Title>{item.problem.statement}</Card.Title>
                   <Card.Text>
                     <strong>Solution:</strong>
@@ -56,6 +61,7 @@ function UserSolutions() {
                         backgroundColor: "#f8f9fa",
                         padding: "10px",
                         borderRadius: "5px",
+                        overflowX: "auto",
                       }}
                     >
                       {item.answer}

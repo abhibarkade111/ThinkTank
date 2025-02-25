@@ -38,7 +38,7 @@ function ProblemSolutions() {
             }}
           >
             <h4>
-              Problem Statement:
+              Statement:
               {location.state.problem.statement}
             </h4>
           </div>
@@ -50,10 +50,15 @@ function ProblemSolutions() {
                     width: "100%",
                     margin: "20px auto",
                     textAlign: "left",
+                    padding: "1em",
                   }}
                 >
-                  <Card.Body>
-                    <Card.Title>submited by {item.postedBy.name}</Card.Title>
+                  <Card.Body
+                    style={{
+                      padding: "0em",
+                    }}
+                  >
+                    <Card.Title>submited by: {item.postedBy.name}</Card.Title>
                     <Card.Text>
                       <strong>Solution:</strong>
                       <pre
@@ -61,6 +66,7 @@ function ProblemSolutions() {
                           backgroundColor: "#f8f9fa",
                           padding: "10px",
                           borderRadius: "5px",
+                          overflowX: "auto",
                         }}
                       >
                         {item.answer}
