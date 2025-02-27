@@ -32,9 +32,6 @@ const ProfilePopup = ({ currentUser, imageMap }) => {
           <strong>{currentUser ? currentUser.name : "Guest"}</strong>
           <small>{currentUser?.email || "No email available"}</small>
           <hr />
-          <Button variant="outline-primary" size="sm" className="mb-2">
-            View Profile
-          </Button>
           <Button variant="outline-danger" size="sm" onClick={handleLogout}>
             Sign Out
           </Button>
