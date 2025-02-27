@@ -97,7 +97,12 @@ function AllUsers() {
     : JSON.parse(localStorage.getItem("user"));
 
   return (
-    <Container className="mt-4">
+    <Container
+      className="mt-4"
+      style={{
+        marginTop: "60px",
+      }}
+    >
       <Row>
         {loading ? (
           <div className="text-center">

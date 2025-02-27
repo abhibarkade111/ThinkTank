@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, OverlayTrigger, Popover, Button } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import React, { useState } from "react";
 import Image from "react-bootstrap/Image";
@@ -14,6 +14,7 @@ import ChetanPic from "../assets/Chetan.avif";
 import HarshalPic from "../assets/Harshal.avif";
 import ShrikantPic from "../assets/Shrikant.avif";
 import ShreyaPic from "../assets/Shreya.jpg";
+import ProfilePopup from "./ProfilePopup";
 
 const imageMap = {
   AbhishekPic: AbhishekPic,
@@ -41,6 +42,7 @@ function NavbarComponenet() {
   const currentUser = !localStorage.getItem("user")
     ? null
     : JSON.parse(localStorage.getItem("user"));
+
   return (
     <Navbar expand="md" bg="dark" variant="dark" fixed="top">
       <Container>
@@ -63,17 +65,8 @@ function NavbarComponenet() {
               Add Problem
             </Nav.Link>
           </Nav>
-          <Navbar.Text>
-            Signed in as:{" "}
-            <a href="#login">
-              {!currentUser ? "Not looged in" : currentUser.name}
-            </a>
-          </Navbar.Text>
-          <Image
-            src={!currentUser ? "" : imageMap[currentUser.pic]}
-            style={{ borderRadius: "50%", height: "60px", width: "60px" }}
-            className="mx-2"
-          />
+
+          <ProfilePopup currentUser={currentUser} imageMap={imageMap} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

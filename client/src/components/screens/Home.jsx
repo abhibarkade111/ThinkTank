@@ -23,7 +23,7 @@ const Home = () => {
           textAlign: "left",
           justifyContent: "flex-start",
           paddingLeft: "5%",
-          marginTop: "60px",
+          marginTop: "70px",
         }}
       >
         <div className="hero-content">
