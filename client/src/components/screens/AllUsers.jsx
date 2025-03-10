@@ -98,9 +98,8 @@ function AllUsers() {
 
   return (
     <Container
-      className="mt-4"
       style={{
-        marginTop: "60px",
+        marginTop: "70px",
       }}
     >
       <Row>
@@ -126,7 +125,7 @@ function AllUsers() {
                       width: "100%",
                       maxWidth: "300px",
                       height: "200px",
-                      objectFit: "cover",
+                      objectFit: "contain",
                       borderRadius: "10px",
                     }}
                   />
