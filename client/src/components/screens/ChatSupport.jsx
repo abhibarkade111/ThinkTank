@@ -1,7 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faPaperPlane, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComments,
+  faPaperPlane,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { Button, Card, Form, InputGroup } from "react-bootstrap";
 
 const ChatSupport = () => {
@@ -19,12 +23,15 @@ const ChatSupport = () => {
     setMessage("");
 
     try {
-      const res = await axios.post("http://localhost:5000/chat", { message });
+      const res = await axios.post("/chat", { message });
       const botResponse = res.data.choices[0].message.content;
       setMessages([...newMessages, { role: "bot", content: botResponse }]);
     } catch (error) {
       console.error("Error:", error);
-      setMessages([...newMessages, { role: "bot", content: "Error fetching response." }]);
+      setMessages([
+        ...newMessages,
+        { role: "bot", content: "Error fetching response." },
+      ]);
     }
   };
 
@@ -40,7 +47,11 @@ const ChatSupport = () => {
         <Card className="chat-popup">
           <Card.Header className="chat-header">
             <h6 className="mb-0">Support Assistant</h6>
-            <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={toggleChat} />
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="close-icon"
+              onClick={toggleChat}
+            />
           </Card.Header>
 
           <Card.Body className="chat-body">
