@@ -30,6 +30,8 @@ const userRoute = require('./routes/user')
 app.use(userRoute)
 const problemRouter = require('./routes/problem') 
 app.use(problemRouter)
+const chatRouter = require('./routes/chatsupport') 
+app.use(chatRouter)
 
 if(process.env.NODE_ENV ==="production"){
   app.use(express.static('client/dist'))

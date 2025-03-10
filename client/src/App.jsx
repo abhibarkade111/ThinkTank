@@ -21,6 +21,8 @@ import ProblemForm from "./components/screens/ProblemForm";
 import SignInForm from "./components/screens/SignInForm";
 import SolutionForm from "./components/screens/SolutionForm";
 import Home from "./components/screens/Home";
+import ChatSupport from "./components/screens/ChatSupport";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();
@@ -55,6 +57,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routing />
+        <ChatSupport />
       </BrowserRouter>
     </UserContext.Provider>
   );
