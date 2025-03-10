@@ -10,7 +10,7 @@ const axios = require("axios");
 const API_KEY = process.env.MISTRAL_API_KEY;
 const MISTRAL_API_URL = "https://api.mistral.ai/v1/chat/completions"; // Mistral API endpoint
 
-router.post("/chat", async (req, res) => {
+router.post("/chat", requireLogin, async (req, res) => {
   try {
     const { message } = req.body;
 
