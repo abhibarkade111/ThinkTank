@@ -56,13 +56,16 @@ function NavbarComponenet() {
             <Nav.Link onClick={() => handleClick("/problems")}>
               Problems
             </Nav.Link>
-            <Nav.Link onClick={() => handleClick("/users")}>Users</Nav.Link>
+            {/* <Nav.Link onClick={() => handleClick("/users")}>Users</Nav.Link> */}
             <Nav.Link
               onClick={() =>
                 currentUser ? navigate("/addproblem") : navigate("/signin")
               }
             >
               Add Problem
+            </Nav.Link>
+            <Nav.Link onClick={() => handleClick("/leaderboard")}>
+              Leaderboard
             </Nav.Link>
           </Nav>
 

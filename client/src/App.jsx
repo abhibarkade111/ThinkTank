@@ -18,6 +18,8 @@ import { reducer, initialState } from "./reducers/userReducers";
 import Problems from "./components/screens/Problems";
 import ProblemSolutions from "./components/screens/ProblemSolutions";
 import ProblemForm from "./components/screens/ProblemForm";
+import Profiles from "./components/screens/Profile";
+import LeaderBoard from "./components/screens/LeaderBoard";
 import SignInForm from "./components/screens/SignInForm";
 import SolutionForm from "./components/screens/SolutionForm";
 import Home from "./components/screens/Home";
@@ -42,6 +44,8 @@ const Routing = () => {
       <Route path="/solutions" element={<UserSolutions />} />
       <Route path="/problems" element={<Problems />} />
       <Route path="/problems/solutions" element={<ProblemSolutions />} />
+      <Route path="/leaderboard" element={<LeaderBoard />} />
+      <Route path="/Profiles" element={<Profiles />} />
       <Route path="/addproblem" element={<ProblemForm />} />
       <Route path="/signin" element={<SignInForm />} />
       <Route path="/problems/solve" element={<SolutionForm />} />
