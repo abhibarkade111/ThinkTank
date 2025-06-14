@@ -25,6 +25,7 @@ import SolutionForm from "./components/screens/SolutionForm";
 import Home from "./components/screens/Home";
 import ChatSupport from "./components/screens/ChatSupport";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Compiler from "./components/screens/Compiler";
 export const UserContext = createContext();
 const Routing = () => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const Routing = () => {
       <Route path="/addproblem" element={<ProblemForm />} />
       <Route path="/signin" element={<SignInForm />} />
       <Route path="/problems/solve" element={<SolutionForm />} />
+      <Route path="/compiler" element={<Compiler />} />
     </Routes>
   );
 };

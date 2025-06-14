@@ -67,6 +67,9 @@ function NavbarComponenet() {
             <Nav.Link onClick={() => handleClick("/leaderboard")}>
               Leaderboard
             </Nav.Link>
+            <Nav.Link onClick={() => handleClick("/compiler")}>
+              Compiler
+            </Nav.Link>
           </Nav>
 
           <ProfilePopup currentUser={currentUser} imageMap={imageMap} />

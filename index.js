@@ -32,6 +32,8 @@ const problemRouter = require('./routes/problem')
 app.use(problemRouter)
 const chatRouter = require('./routes/chatsupport') 
 app.use(chatRouter)
+const compilerRouter = require('./routes/compiler') 
+app.use(compilerRouter)
 
 if(process.env.NODE_ENV ==="production"){
   app.use(express.static('client/dist'))

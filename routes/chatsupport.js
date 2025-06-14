@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router()
-const { OpenAI } = require("openai");
 const requireLogin = require("../middleware/requireLogin");
 const axios = require("axios");
 
